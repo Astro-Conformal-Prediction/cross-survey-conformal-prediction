@@ -4,3 +4,5 @@ scikit-learn
 datasets
 huggingface_hub
 python-dotenv
+--extra-index-url=https://pypi.nvidia.com
+cuml-cu12==26.04.00
