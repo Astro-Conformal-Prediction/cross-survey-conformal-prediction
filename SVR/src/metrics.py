@@ -30,12 +30,7 @@ def kfold_residual_metrics(X, Y, k=5):
 
 
 def conformal_metrics(X_train, Y_train, X_cal, Y_cal, X_test, Y_test, alpha=0.10):
-    """Split conformal prediction.
-
-    Fits on (X_train, Y_train), calibrates an L2-residual-norm threshold on
-    (X_cal, Y_cal) at level 1 - alpha, then reports how well that threshold
-    covers the held-out (X_test, Y_test) pairs.
-    """
+    
     model = MultiOutputRegressor(SVR(kernel="rbf", C=1.0))
     model.fit(X_train, Y_train)
 
