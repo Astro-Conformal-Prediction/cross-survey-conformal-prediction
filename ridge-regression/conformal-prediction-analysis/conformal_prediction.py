@@ -5,16 +5,14 @@ import numpy as np
 import pandas as pd
 from tqdm.auto import tqdm
 
-SRC_DIR = os.path.abspath(
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "src")
-)
-if os.path.isdir(SRC_DIR) and SRC_DIR not in sys.path:
-    sys.path.insert(0, SRC_DIR)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
 
-
-from dataloader import load_data
+from src.dataloader import load_data
 from sklearn.linear_model import RidgeCV
-from residuals import normalized_l2
+from src.residuals import normalized_l2
 
 
 

@@ -33,7 +33,7 @@ pip install -r requirements.txt
 ### Cross-Survey Translation
 
 ```bash
-python ridge-regression/cross-survey-translation/train_kfold_ridge.py
+python3 ridge-regression/cross-survey-translation/train_kfold_ridge.py
 ```
 - `train_kfold_ridge.py` – Ridge Regression translator
 - `results.csv` – Translation results
@@ -41,7 +41,7 @@ python ridge-regression/cross-survey-translation/train_kfold_ridge.py
 ### Conformal Prediction Analysis
 
 ```bash
-python ridge-regression/conformal-prediction-analysis/conformal_prediction.py
+python3 ridge-regression/conformal-prediction-analysis/conformal_prediction.py
 ```
 
 - `conformal_prediction.py` – Conformal evaluation pipeline

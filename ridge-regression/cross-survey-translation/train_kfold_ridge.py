@@ -6,16 +6,15 @@ import pandas as pd
 from tqdm.auto import tqdm
 
 
-SRC_DIR = os.path.abspath(
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "src")
-)
-if os.path.isdir(SRC_DIR) and SRC_DIR not in sys.path:
-    sys.path.insert(0, SRC_DIR)
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
     
-    
-from dataloader import load_data
+from src.dataloader import load_data
 from sklearn.linear_model import RidgeCV
-from residuals import residual_summary, normalized_l2, pooled_residuals
+from src.residuals import residual_summary, normalized_l2, pooled_residuals
 
 
 configs = ['astropt_15m', 'astropt_850m', 'astropt_95m', 'convnext_base', 'convnext_large', 'convnext_nano', 'convnext_tiny', 'dino_base', 'dino_giant', 'dino_large', 'dino_small', 'ijepa_giant', 'ijepa_huge', 'vit_base', 'vit_huge', 'vit_large'] 
