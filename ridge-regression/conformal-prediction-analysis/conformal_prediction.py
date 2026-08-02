@@ -1,6 +1,5 @@
 import os
 import sys
-import joblib
 import numpy as np
 import pandas as pd
 from tqdm.auto import tqdm
@@ -15,8 +14,8 @@ from sklearn.linear_model import RidgeCV
 from src.residuals import normalized_l2
 
 
-
-configs = ['astropt_15m', 'astropt_850m', 'astropt_95m', 'convnext_base', 'convnext_large', 'convnext_nano', 'convnext_tiny', 'dino_base', 'dino_giant', 'dino_large', 'dino_small', 'ijepa_giant', 'ijepa_huge', 'vit_base', 'vit_huge', 'vit_large']
+configs = ['astropt_15m', 'astropt_850m', 'astropt_95m', 'convnext_base', 'convnext_large', 'convnext_nano', 'convnext_tiny', 'dino_base', 
+           'dino_giant', 'dino_large', 'dino_small', 'ijepa_giant', 'ijepa_huge', 'vit_base', 'vit_huge', 'vit_large']
 
 datasets = {
 
@@ -33,7 +32,6 @@ datasets = {
         "import_splits": True,
     },
 
-
     "legacysurvey_hsc": {
         "repo_id": "astro-conformal-project/split_legacysurvey_hsc_embeddings",
         "source_embed": "{config}_legacysurvey",
@@ -43,10 +41,6 @@ datasets = {
 }
 
 EXP_DIR = os.path.dirname(os.path.abspath(__file__))
-
-model_dir = os.path.join(EXP_DIR, "saved_models")
-os.makedirs(model_dir, exist_ok=True)
-
 
 alphas = np.logspace(-4, 4, 25) # hyperparam grid
 
@@ -125,26 +119,7 @@ for dataset_name, dataset_spec in datasets.items():
 
             model.fit(X_train, Y_train)
 
-            model_path = os.path.join(
-                model_dir,
-                f"ridgecv_{dataset_name}_{config}.joblib",
-            )
-
-            joblib.dump(
-                {
-                    "model": model,
-                    "dataset_name": dataset_name,
-                    "repo_id": dataset_spec["repo_id"],
-                    "config_name": config,
-                    "source_col": source_embed,
-                    "target_col": target_embed,
-                    "chosen_alpha": float(model.alpha_),
-                },
-                model_path,
-            )
-
             print("Chosen alpha:", model.alpha_)
-            print("Saved model:", model_path)
 
             Y_calib_pred = model.predict(X_calib)
             calib_residuals = normalized_l2(translated=Y_calib_pred, actual=Y_calib)
@@ -154,8 +129,10 @@ for dataset_name, dataset_spec in datasets.items():
 
             for threshold in thresholds:
                 target_coverage = threshold / 100.0
-
-                radius = float(np.percentile(calib_residuals, threshold))
+                alpha  = 1.0 - target_coverage
+                n = len(calib_residuals)
+                q_level = np.ceil((n+1) * (1-alpha)) / n
+                radius = float(np.quantile(calib_residuals, q_level, method = "higher"))
 
                 uncovered_mask = test_residuals > radius
                 covered = int(np.sum(~uncovered_mask))
