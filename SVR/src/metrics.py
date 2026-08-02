@@ -30,7 +30,12 @@ def kfold_residual_metrics(X, Y, k=5):
 
 
 def conformal_metrics(X_train, Y_train, X_cal, Y_cal, X_test, Y_test, alpha=0.10):
-    
+    """Split conformal prediction.
+
+    Fits on (X_train, Y_train), calibrates an L2-residual-norm threshold on
+    (X_cal, Y_cal) at level 1 - alpha, then reports how well that threshold
+    covers the held-out (X_test, Y_test) pairs.
+    """
     model = MultiOutputRegressor(SVR(kernel="rbf", C=1.0))
     model.fit(X_train, Y_train)
 
@@ -54,3 +59,24 @@ def conformal_metrics(X_train, Y_train, X_cal, Y_cal, X_test, Y_test, alpha=0.10
         "coverage_error": abs(empirical_coverage - (1 - alpha)),
     }
     return {key: round(float(val), 6) for key, val in metrics.items()}
+
+def uncovered_conformal(X_train, Y_train, X_cal, Y_cal, X_test, Y_test, UNCOVERED_ALPHA=0.10):
+    """Train the SVR once and return calibration/test residual norms."""
+    model = MultiOutputRegressor(SVR(kernel='rbf', C=1.0))
+    model.fit(X_train, Y_train)
+
+    cal_preds = normalize(model.predict(X_cal), norm='l2', axis=1)
+    cal_residuals = np.linalg.norm(Y_cal - cal_preds, axis=1)
+
+    test_preds = normalize(model.predict(X_test), norm='l2', axis=1)
+    test_residuals = np.linalg.norm(Y_test - test_preds, axis=1)
+
+    n = len(cal_residuals)
+    q_level = np.ceil((n + 1) * (1 - UNCOVERED_ALPHA)) / n
+    q_level = min(q_level, 1.0)
+    q90=np.quantile(cal_residuals, q_level, method='higher')
+
+    uncovered_mask = test_residuals > q90
+    
+    
+    return uncovered_mask

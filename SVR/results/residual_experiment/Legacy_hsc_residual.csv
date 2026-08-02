@@ -1,0 +1,17 @@
+Model,Survey_pair,Mean_residual,Median_residual,90th_percentile_residual
+astropt_15m,astropt_15m_legacysurvey→astropt_15m_hsc,0.212085,0.196678,0.272465
+astropt_850m,astropt_850m_legacysurvey→astropt_850m_hsc,0.208707,0.201998,0.24341
+astropt_95m,astropt_95m_legacysurvey→astropt_95m_hsc,0.194221,0.182859,0.242949
+convnext_base,convnext_base_legacysurvey→convnext_base_hsc,0.405474,0.384085,0.544423
+convnext_large,convnext_large_legacysurvey→convnext_large_hsc,0.416811,0.396175,0.560716
+convnext_nano,convnext_nano_legacysurvey→convnext_nano_hsc,0.458122,0.441939,0.57661
+convnext_tiny,convnext_tiny_legacysurvey→convnext_tiny_hsc,0.400249,0.374711,0.549883
+dino_base,dino_base_legacysurvey→dino_base_hsc,0.343509,0.32523,0.445599
+dino_giant,dino_giant_legacysurvey→dino_giant_hsc,0.249237,0.229388,0.345983
+dino_large,dino_large_legacysurvey→dino_large_hsc,0.304441,0.286102,0.410129
+dino_small,dino_small_legacysurvey→dino_small_hsc,0.43811,0.427097,0.501943
+ijepa_giant,ijepa_giant_legacysurvey→ijepa_giant_hsc,0.344147,0.317207,0.459896
+ijepa_huge,ijepa_huge_legacysurvey→ijepa_huge_hsc,0.317161,0.28476,0.447969
+vit_base,vit_base_legacysurvey→vit_base_hsc,0.453591,0.437092,0.568755
+vit_huge,vit_huge_legacysurvey→vit_huge_hsc,0.269206,0.255537,0.339426
+vit_large,vit_large_legacysurvey→vit_large_hsc,0.301,0.290855,0.373344

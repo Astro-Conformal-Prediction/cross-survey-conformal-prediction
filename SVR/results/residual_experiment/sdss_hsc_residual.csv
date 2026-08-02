@@ -1,0 +1,17 @@
+Model,Survey_pair,Mean_residual,Median_residual,90th_percentile_residual
+astropt_15m,specformer_base_sdss→astropt_15m_hsc,0.274422,0.254756,0.352504
+astropt_850m,specformer_base_sdss→astropt_850m_hsc,0.228566,0.213159,0.284555
+astropt_95m,specformer_base_sdss→astropt_95m_hsc,0.246542,0.231478,0.304267
+convnext_base,specformer_base_sdss→convnext_base_hsc,0.44444,0.416997,0.610119
+convnext_large,specformer_base_sdss→convnext_large_hsc,0.457985,0.440128,0.611754
+convnext_nano,specformer_base_sdss→convnext_nano_hsc,0.478891,0.452829,0.665704
+convnext_tiny,specformer_base_sdss→convnext_tiny_hsc,0.469178,0.427684,0.674748
+dino_base,specformer_base_sdss→dino_base_hsc,0.362726,0.328779,0.518275
+dino_giant,specformer_base_sdss→dino_giant_hsc,0.274953,0.248037,0.402876
+dino_large,specformer_base_sdss→dino_large_hsc,0.343969,0.315409,0.488252
+dino_small,specformer_base_sdss→dino_small_hsc,0.380143,0.353193,0.513119
+ijepa_giant,specformer_base_sdss→ijepa_giant_hsc,0.312277,0.274964,0.466155
+ijepa_huge,specformer_base_sdss→ijepa_huge_hsc,0.306924,0.266318,0.454425
+vit_base,specformer_base_sdss→vit_base_hsc,0.455639,0.430545,0.626815
+vit_huge,specformer_base_sdss→vit_huge_hsc,0.304512,0.281237,0.42532
+vit_large,specformer_base_sdss→vit_large_hsc,0.337028,0.32114,0.426039

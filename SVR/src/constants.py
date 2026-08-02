@@ -1,4 +1,4 @@
-"""Shared constants for the cross-survey embedding alignment project."""
+
 
 FOUNDATION_MODELS = [
     "astropt_15m", "astropt_850m", "astropt_95m",

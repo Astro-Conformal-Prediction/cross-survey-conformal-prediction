@@ -1,3 +1,0 @@
-Model,Survey_pair,empirical_coverage,mean_radius,coverage_error
-dino_base,dino_base_hsc→dino_base_jwst,0.886288,0.714353,0.013712
-vit_large,vit_large_hsc→vit_large_jwst,0.899666,0.578743,0.000334
