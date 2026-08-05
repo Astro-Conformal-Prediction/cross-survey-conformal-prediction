@@ -1,0 +1,59 @@
+# Experiment 4 config: HSC → JWST
+# -------------------------------------------------------
+# Survey pair
+survey_pair: hsc_jwst
+
+# -------------------------------------------------------
+# Embedding paths (edit to match your cluster paths)
+# Pre-split arrays — one file per split, per survey
+# -------------------------------------------------------
+source_embeddings_train: /projects/bfir/ssourav/embeddings/hsc_jwst/hsc_train.npy
+target_embeddings_train: /projects/bfir/ssourav/embeddings/hsc_jwst/jwst_train.npy
+
+source_embeddings_cal: /projects/bfir/ssourav/embeddings/hsc_jwst/hsc_cal.npy
+target_embeddings_cal: /projects/bfir/ssourav/embeddings/hsc_jwst/jwst_cal.npy
+
+source_embeddings_test: /projects/bfir/ssourav/embeddings/hsc_jwst/hsc_test.npy
+target_embeddings_test: /projects/bfir/ssourav/embeddings/hsc_jwst/jwst_test.npy
+
+# Optional: row IDs (object catalogue IDs) for uncovered-object tracking
+# row_ids_test: /projects/bfir/ssourav/embeddings/hsc_jwst/row_ids_test.npy
+
+# -------------------------------------------------------
+# Split fractions (informational — splits are pre-computed)
+# 60% train / 20% cal / 20% test
+# Inside train: 70% translator / 30% difficulty
+# -------------------------------------------------------
+difficulty_train_fraction: 0.30
+
+# -------------------------------------------------------
+# Translator
+# -------------------------------------------------------
+ridge_alpha: 1.0
+
+# -------------------------------------------------------
+# Difficulty model PCA dimension
+# (source embeddings projected to this dim before kNN / feature concat)
+# -------------------------------------------------------
+pca_dim: 64
+
+# -------------------------------------------------------
+# Backbones to run (expand after verifying on astropt_850m)
+# -------------------------------------------------------
+backbones:
+  - astropt_850m
+# Add after verification:
+#  - astropt_95m
+#  - vit_huge
+#  - dino_small
+#  - dino_giant
+#  - convnext
+
+# -------------------------------------------------------
+# Per-backbone embedding overrides (optional)
+# If a backbone uses different embedding files, add them here.
+# -------------------------------------------------------
+# backbone_overrides:
+#   astropt_95m:
+#     source_embeddings_train: /path/to/astropt_95m/hsc_train.npy
+#     ...

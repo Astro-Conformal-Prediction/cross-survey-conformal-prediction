@@ -1,0 +1,41 @@
+# Experiment 4 config: SDSS → HSC
+# -------------------------------------------------------
+survey_pair: sdss_hsc
+
+# -------------------------------------------------------
+# Embedding paths
+# -------------------------------------------------------
+source_embeddings_train: /projects/bfir/ssourav/embeddings/sdss_hsc/sdss_train.npy
+target_embeddings_train: /projects/bfir/ssourav/embeddings/sdss_hsc/hsc_train.npy
+
+source_embeddings_cal: /projects/bfir/ssourav/embeddings/sdss_hsc/sdss_cal.npy
+target_embeddings_cal: /projects/bfir/ssourav/embeddings/sdss_hsc/hsc_cal.npy
+
+source_embeddings_test: /projects/bfir/ssourav/embeddings/sdss_hsc/sdss_test.npy
+target_embeddings_test: /projects/bfir/ssourav/embeddings/sdss_hsc/hsc_test.npy
+
+# -------------------------------------------------------
+# Split fractions
+# 60% train / 20% cal / 20% test
+# Inside train: 70% translator / 30% difficulty
+# -------------------------------------------------------
+difficulty_train_fraction: 0.30
+
+# -------------------------------------------------------
+# Translator
+# -------------------------------------------------------
+ridge_alpha: 1.0
+
+# -------------------------------------------------------
+# PCA
+# -------------------------------------------------------
+pca_dim: 64
+
+# -------------------------------------------------------
+# Backbones
+# -------------------------------------------------------
+backbones:
+  - astropt_850m
+# - astropt_95m
+# - vit_huge
+# - dino_small
