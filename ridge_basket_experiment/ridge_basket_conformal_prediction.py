@@ -1,9 +1,3 @@
-"""
-Experiment 4: multi-model basket conformal prediction (Self-Contained Version).
-
-Compares best/median/worst single-model baselines against Basket A/B/C on
-one survey pair, writing every 4.6 deliverable as CSVs.
-"""
 
 import argparse
 import os
