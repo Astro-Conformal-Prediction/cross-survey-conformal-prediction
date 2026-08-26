@@ -1,8 +1,8 @@
-# Cross-Survey Conformal Prediction
+# Do Astronomical Foundation Models Know When They Will Fail?
 
 Code for **"Do Astronomical Foundation Models Know When They Will Fail?"** — an interpretable conformal-prediction framework for auditing whether astronomical foundation-model embeddings of the *same object* stay reliable when transferred across surveys, and whether a representation can warn us in advance that it's about to fail.
 
-![Overview of the cross-survey representation audit](assets/overview.png)
+![Overview of the cross-survey representation audit](readme_img/overview.png)
 
 ## Overview
 
@@ -55,7 +55,7 @@ export HF_TOKEN=hf_your_token_here
 │   ├── configs/                   # Per-survey-pair YAML configs
 │   └── run_adaptive_cp.py         # Main entry point
 │
-└── assets/                         # Figures used in this README
+└── readme_img/                         # Figures used in this README
 ```
 
 Each of `SVR/`, `knn_regression/`, and `ridge-regression/` also has its own README with translator-specific details.
@@ -81,6 +81,13 @@ Python 3.9+ is required; `knn_regression` specifically needs `numpy >= 1.22` for
 
 ## Running Experiments
 
+
+### Ridge regression baseline
+
+```bash
+python3 ridge-regression/cross-survey-translation/train_kfold_ridge.py
+python3 ridge-regression/conformal-prediction-analysis/conformal_prediction.py
+```
 ### SVR (residuals + global conformal prediction)
 
 ```bash
@@ -101,21 +108,6 @@ python run_experiment.py                                  # all survey pairs × 
 python run_experiment.py --pairs sdss_hsc --models astropt_15m dino_small   # quick smoke test
 ```
 
-### Ridge regression baseline
-
-```bash
-python3 ridge-regression/cross-survey-translation/train_kfold_ridge.py
-python3 ridge-regression/conformal-prediction-analysis/conformal_prediction.py
-```
-
-### Ridge "basket" ensemble experiment
-
-```bash
-cd ridge_basket_experiment
-python ridge_basket_conformal_prediction.py --survey jwst --out-dir jwst_results \
-    --reference-model astropt_850m --ranking-alpha 0.10
-```
-
 ### Adaptive conformal prediction (Experiment 4)
 
 ```bash
@@ -133,6 +125,3 @@ Survey-pair configs (embedding paths, PCA dimension, ridge alpha, split fraction
 
 This code accompanies a paper currently under anonymous review at NeurIPS 2026. A citation entry will be added once the paper is public.
 
-## License
-
-No license file is currently included in this repository — add one (e.g. MIT or Apache-2.0) before treating this as open source.
