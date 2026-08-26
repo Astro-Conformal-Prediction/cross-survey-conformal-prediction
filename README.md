@@ -55,7 +55,7 @@ export HF_TOKEN=hf_your_token_here
 │   ├── configs/                   # Per-survey-pair YAML configs
 │   └── run_adaptive_cp.py         # Main entry point
 │
-└── readme_img/                         # Figures used in this README
+└── overview.png                         # Figures used in README
 ```
 
 Each of `SVR/`, `knn_regression/`, and `ridge-regression/` also has its own README with translator-specific details.
