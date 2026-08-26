@@ -20,7 +20,5 @@
        --models dino_base,vit_large --alpha 0.10 \
        --out results/jwst_hsc_conformal.csv
    ```
-   `--models` accepts a comma-separated subset, so a sweep across all 16
-   models can be sharded across processes/machines; it defaults to all
-   16 foundation models if omitted.
+
 
