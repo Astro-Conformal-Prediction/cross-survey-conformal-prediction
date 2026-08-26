@@ -121,7 +121,4 @@ python run_adaptive_cp.py --dataset all --config all --coverage 80 90 95
 
 Survey-pair configs (embedding paths, PCA dimension, ridge alpha, split fractions) live in `adaptive-conformal/configs/*.yaml` — update the embedding paths there for your environment before running.
 
-## Citation
-
-This code accompanies a paper currently under anonymous review at NeurIPS 2026. A citation entry will be added once the paper is public.
 
