@@ -2,7 +2,7 @@
 
 Code for **"Do Astronomical Foundation Models Know When They Will Fail?"** — an interpretable conformal-prediction framework for auditing whether astronomical foundation-model embeddings of the *same object* stay reliable when transferred across surveys, and whether a representation can warn us in advance that it's about to fail.
 
-![Overview of the cross-survey representation audit](readme_img/overview.png)
+![Overview of the cross-survey representation audit](overview.png)
 
 ## Overview
 
