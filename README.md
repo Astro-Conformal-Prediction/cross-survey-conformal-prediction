@@ -49,11 +49,11 @@ export HF_TOKEN=hf_your_token_here
 │   ├── conformal-prediction-analysis/ # Conformal evaluation at 80/90/95% thresholds
 │   └── src/                       # Shared helpers
 │
-├── ridge_basket_experiment/        # Ensemble ("basket") ridge translators, rescue-rate & seed-stability analysis
-│
 ├── adaptive-conformal/              # Experiment 4: residual-normalized adaptive conformal prediction
 │   ├── configs/                   # Per-survey-pair YAML configs
 │   └── run_adaptive_cp.py         # Main entry point
+│
+├── ridge_basket_experiment/        # Ensemble ("basket") ridge translators, rescue-rate & seed-stability analysis
 │
 └── overview.png                         # Figure used in README
 ```
