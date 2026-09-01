@@ -31,7 +31,7 @@ def load_embedding_pair(survey, model_name, split, hf_token=None):
         target_col = columns[cfg["target_col"]]
         
 
-        X_list, Y_list, ids = [], []
+        X_list, Y_list = [], []
         for example in dataset:
             X_list.append(example[source_col])
             Y_list.append(example[target_col])
