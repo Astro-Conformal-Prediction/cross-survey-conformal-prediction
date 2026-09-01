@@ -1,3 +1,7 @@
+"""
+(Ridge) Global Conformal Prediction : Shuffled Conformal prediction over the test + calibration set, Uncovered Objects Overlap
+"""
+
 import os
 import sys
 import numpy as np
